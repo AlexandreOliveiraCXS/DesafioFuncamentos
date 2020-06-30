@@ -29,11 +29,7 @@ transactionRouter.post('/', (request, response) => {
       value,
       type
     });
-    
-    const { total } = transactionsRepository.getBalance();
-    if(total < value && type == "outcome")
-      return response.status(400).json({ error: "Insufficient amount for withdrawal" });    
-
+        
     return response.json(transaction);
 
   } catch (err) {
